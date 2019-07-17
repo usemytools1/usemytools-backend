@@ -6,6 +6,8 @@ const SessionStore = require("connect-session-knex")(session);
 
 const authRouter = require("../auth/authRouter.js");
 const userRouter = require("../users/usersRouter.js");
+const toolsRouter = require("../tools/toolsRouter.js");
+
 
 const server = express();
 
@@ -34,6 +36,8 @@ server.use(cors());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
+server.use("/api/tools", toolsRouter);
+
 
 server.get("/", (req, res) => {
   res.send("Online");
