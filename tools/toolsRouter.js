@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const knex = require('knex');
 
+const restricted = require('../auth/restrictedMiddleware.js');
+// const checkRole = require('../auth/check-role-middleware.js');
+
 const db = require('../data/dbConfig.js')
 
-// create tool
-router.post('/', async (req, res) => {
+// create tool (restricted to users)
+router.post('/', restricted, async (req, res) => {
     try {
         const [id] = await db('tools').insert(req.body);
 
@@ -53,8 +56,8 @@ const errors = {
     '19': 'Another record with that value exists',
 };
 
-// update tools
-router.put('/:id', async (req, res) => {
+// update tools (restricted to users but not authored user)
+router.put('/:id', restricted, async (req, res) => {
     try {
         const count = await db('tools')
             .where({
@@ -78,8 +81,8 @@ router.put('/:id', async (req, res) => {
     } catch (error) {}
 });
 
-// remove tools (inactivate the tool)
-router.delete('/:id', async (req, res) => {
+// remove tools (inactivate the tool, restricted to users but not authored user)
+router.delete('/:id', restricted, async (req, res) => {
     try {
         const count = await db('tools')
             .where({
