@@ -11,9 +11,8 @@
 
 | Method | Endpoint           | Description                                                                                                                                                                                 |
 | ------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GET    | Coming soon  | Retrieves a list of all the tools created by the logged in user.                                                                                                                        |
-| GET    | Coming soon  | Retrieves a tool specified by the `id` provided.                                                                                                                                        |
-| POST   | /api/tools  | If all required fields (tool name) are met, creates a tool.  |
-
-| DELETE | Coming soon| Only author can delete. This deletes the tool with the specified `id`.                                                                                                      |
-| PUT    | Coming soon  | Only author can update the tool with the specified `id`.                                 |
+| GET    | /api/tools  | Retrieves a list of all the tools created by the logged in user.                                                                                                                        |
+| GET    | /api/tools/:id  | Retrieves a tool specified by the `id` provided.                                                                                                                                        |
+| POST   | /api/tools  | If all required fields (tool name) are met, creates a tool.                                                                                                                              | 
+| DELETE | Coming soon | Only author can delete. This deletes the tool with the specified `id`.                                                                                                                   |
+| PUT    | /api/tools/:id  | Only author can update the tool with the specified `id`.                                                                                                                                |

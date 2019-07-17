@@ -24,24 +24,78 @@ router.post('/', async (req, res) => {
     }
 });
 
+// list all tools
+router.get('/', async (req, res) => {
+    // get the tools from the database
+    try {
+        const tools = await db('tools'); // all the records from the table
+        res.status(200).json(tools);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
-// router.post("/", (req, res) => {
-//     // let user = req.body;
-//     // const hash = bcrypt.hashSync(user.password, 14);
-//     // user.password = hash;
+// list a tool by id
+router.get('/:id', async (req, res) => {
+    // get the tools from the database
+    try {
+        const tool = await db('tools')
+            .where({
+                id: req.params.id
+            })
+            .first();
+        res.status(200).json(tool);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+const errors = {
+    '19': 'Another record with that value exists',
+};
 
-//     Users.add(user)
-//       .then(saved => {
-//         const token = generateToken(saved);
+// update tools
+router.put('/:id', async (req, res) => {
+    try {
+        const count = await db('tools')
+            .where({
+                id: req.params.id
+            })
+            .update(req.body);
 
-//         res.status(201).json({
-//           message: `Welcome ${saved.username}`,
-//           authToken: token
-//         });
-//       })
-//       .catch(err => {
-//         res.status(500).json(err);
-//       });
-//   });
+        if (count > 0) {
+            const tool = await db('tools')
+                .where({
+                    id: req.params.id
+                })
+                .first();
+
+            res.status(200).json(tool);
+        } else {
+            res.status(404).json({
+                message: 'Records not found'
+            });
+        }
+    } catch (error) {}
+});
+
+// remove tools (inactivate the tool)
+router.delete('/:id', async (req, res) => {
+    try {
+        const count = await db('tools')
+            .where({
+                id: req.params.id
+            })
+            .del();
+
+        if (count > 0) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({
+                message: 'Records not found'
+            });
+        }
+    } catch (error) {}
+});
+
 
 module.exports = router;
