@@ -7,8 +7,8 @@
 
  Minimum Requirements: 
  [x] Users can log in and create a profile. 
- [] They can then set up items they have available - anything from a shovels to power washers to tile saws.
- [] Users will be able to Create, Read, Update and Delete data. 
+ [x] They can then set up items they have available - anything from a shovels to power washers to tile saws.
+ [x] Users will be able to Create, Read, Update and Delete data. 
  [] A 2nd user can log in and see items that users have available and request to borrow.
 
  Stretch Requirements: 
@@ -46,15 +46,19 @@
 
 ## Data Models
 
-### Reminder Data Model
+### Users Data Model
+
+| Field          | Type      | Description                                     |
+| -------------- | --------- | ----------------------------------------------- |
+| id             | Increment | ID of the newly created user.           |
+| username       | String    | Username of user                                |
+| password       | String    | Encrypted password of user.                     |
+
+### Tools Data Model
 
 | Field          | Type    | Description                                     |
-| -------------- | ------- | ----------------------------------------------- |
-| id             | Integer | ID of the newly created tool or user.           |
-| user_id        | Integer | User id of the user.                            |
-| tool_id        | Integer | tool id of the tool that was created.           |
-| tool_name      | String  | Name of the tool that was created.              |
-| username       | String  | Username of user                                |
-| password       | String  | Encrypted password of user.                     |
-| email          | String  | Email of user to be linked in posted tools.     |
-| available_date | date    | The date the tool was posted for borrowing      |
+| -------------- | --------- | ----------------------------------------------- |
+| id             | Increment | ID of the newly created tool.                   |
+| tool_name      | String    | Name of the tool that was created.              |
+| user_id        | Integer   | User id of the user. Foreign key ID in userlist.|
+| borrower_id    | Integer   | tool id of the tool that was created. If Empty it is not borrowed            |
