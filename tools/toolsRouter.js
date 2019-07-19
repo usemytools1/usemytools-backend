@@ -19,9 +19,9 @@ router.post('/', restricted, async (req, res) => {
 
         res.status(201).json(tool);
     } catch (error) {
-        const message = errors[error.errno] || 'We ran into an error';
+        // const message = errors[error.errno] || 'We ran into an error';
         res.status(500).json({
-            message,
+            // message,
             error
         });
     }
@@ -52,9 +52,9 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
-const errors = {
-    '19': 'Another record with that value exists',
-};
+// const errors = {
+//     '19': 'Another record with that value exists',
+// };
 
 // update tools (restricted to users but not authored user)
 router.put('/:id', restricted, async (req, res) => {
