@@ -1,5 +1,5 @@
 require("dotenv").config();
-// require("newrelic"); // keeps the Heroku server from going idle
+require("newrelic"); // keeps the Heroku server from going idle
 
 const server = require("./api/server.js");
 

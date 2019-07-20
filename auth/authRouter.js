@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const knex = require('knex');
+const knex = require("knex");
 
 const secrets = require("../config/secrets.js");
 const Users = require("../users/usersModel.js");
-
 
 function generateToken(user) {
   const payload = {
@@ -40,14 +39,11 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  let {
-    username,
-    password
-  } = req.body;
+  let { username, password } = req.body;
 
   Users.findBy({
-      username
-    })
+    username
+  })
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
@@ -68,8 +64,5 @@ router.post("/login", (req, res) => {
       res.status(500).json(err);
     });
 });
-
-
-
 
 module.exports = router;
