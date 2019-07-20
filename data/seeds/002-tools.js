@@ -5,55 +5,35 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex('tools').insert([{
-          tool_name: 'saw',
-          user_id: 1,
-          borrower_id: 2
+          name: 'saw',
+          username: 'David',
+          borrower_id: 2,
+          desc: "cuts things"
         },
         {
-          tool_name: 'hammer',
-          user_id: 2,
-          borrower_id: 3
+          name: 'hammer',
+          username: 'Greg',
+          borrower_id: 3,
+          desc: "hits things"
 
         },
         {
-          tool_name: 'drill',
-          user_id: 3,
-          borrower_id: 4
+          name: 'drill',
+          username: 'Carlos',
+          borrower_id: 4,
+          desc: "puts holes in things"
         },
         {
-          tool_name: 'handtruck',
-          user_id: 4,
-          borrower_id: 1
+          name: 'handtruck',
+          username: 'Chaz',
+          borrower_id: 1,
+          desc: "moves heavy things"
         },
         {
-          tool_name: 'wheelbarrow',
-          user_id: 1,
-          borrower_id: 4
-        },
-        {
-          tool_name: 'spark plug gapper',
-          user_id: 1,
-          borrower_id: 3
-        },
-        {
-          tool_name: 'valve spacer',
-          user_id: 2,
-          borrower_id: 1
-        },
-        {
-          tool_name: 'air compressor',
-          user_id: 2,
-          borrower_id: 4
-        },
-        {
-          tool_name: 'american socket set',
-          user_id: 3,
-          borrower_id: 2
-        },
-        {
-          tool_name: 'metric socket set',
-          user_id: 3,
-          borrower_id: 1
+          name: 'wheelbarrow',
+          username: 'David',
+          borrower_id: 4,
+          desc: "carries things"
         }
       ]);
     });
