@@ -12,7 +12,7 @@ exports.up = function(knex) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
       .notNullable();
-    tbl.integer("borrower_id").notNullable(); // if this is blank then the tool is available to be borrowed
+    tbl.string("borrower").notNullable(); // if this is blank then the tool is available to be borrowed
     // tbl.string("img", 128).notNullable(); // not running yet
     tbl.string("desc", 128);
   });
