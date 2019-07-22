@@ -20,7 +20,7 @@ exports.seed = function(knex) {
         {
           name: "drill",
           username: "Carlos",
-          borrower_id: "Greg",
+          borrower: "Greg",
           desc: "puts holes in things"
         },
         {
