@@ -57,7 +57,7 @@ router.get("/:id", async (req, res) => {
 // };
 
 // update tools (restricted to users but not authored user)
-router.put("/:id", restricted, crudAccess, async (req, res) => {
+router.put("/:id", restricted, async (req, res) => {
   try {
     const count = await db("tools")
       .where({
@@ -82,7 +82,7 @@ router.put("/:id", restricted, crudAccess, async (req, res) => {
 });
 
 // remove tools (inactivate the tool, restricted to users but not authored user)
-router.delete("/:id", restricted, crudAccess, async (req, res) => {
+router.delete("/:id", restricted, async (req, res) => {
   try {
     const count = await db("tools")
       .where({
